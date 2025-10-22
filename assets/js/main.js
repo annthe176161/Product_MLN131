@@ -18,6 +18,17 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     e.preventDefault();
     const target = document.querySelector(this.getAttribute("href"));
     if (target) {
+      // Đóng navbar trên mobile khi click vào link
+      const navbarCollapse = document.querySelector(".navbar-collapse");
+      const navbarToggler = document.querySelector(".navbar-toggler");
+      if (navbarCollapse && navbarCollapse.classList.contains("show")) {
+        // Sử dụng Bootstrap's collapse method
+        const bsCollapse = new bootstrap.Collapse(navbarCollapse, {
+          toggle: false,
+        });
+        bsCollapse.hide();
+      }
+
       // Sử dụng scrollIntoView với behavior tùy chọn
       const isMobile = window.innerWidth < 768;
       target.scrollIntoView({
@@ -28,20 +39,23 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
   });
 });
 
-// Navbar scroll effect (optimized with throttle)
+// Navbar scroll effect (optimized with throttle) - Enhanced for sticky navbar
 let lastScroll = 0;
 const navbar = document.querySelector(".navbar");
 let ticking = false;
 
 function updateNavbar(currentScroll) {
+  // Thêm shadow khi scroll
   if (currentScroll > 100) {
     navbar.style.background =
-      "linear-gradient(135deg, rgba(196, 30, 58, 0.95) 0%, rgba(139, 0, 0, 0.95) 100%)";
+      "linear-gradient(135deg, rgba(196, 30, 58, 0.98) 0%, rgba(139, 0, 0, 0.98) 100%)";
     navbar.style.backdropFilter = "blur(10px)";
+    navbar.style.boxShadow = "0 5px 25px rgba(0, 0, 0, 0.3)";
   } else {
     navbar.style.background =
       "linear-gradient(135deg, var(--primary-red) 0%, var(--dark-red) 100%)";
     navbar.style.backdropFilter = "none";
+    navbar.style.boxShadow = "0 2px 20px rgba(0, 0, 0, 0.3)";
   }
   lastScroll = currentScroll;
   ticking = false;
@@ -83,6 +97,7 @@ function updateActiveNav() {
       link.classList.add("active");
     }
   });
+
   navTicking = false;
 }
 
@@ -604,8 +619,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const images = document.querySelectorAll("img");
   images.forEach((img) => {
     img.addEventListener("error", function () {
+      // Use a data URI with a simple placeholder instead of external service
       this.src =
-        "https://via.placeholder.com/800x250/c41e3a/ffffff?text=Historical+Event";
+        "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='250'%3E%3Crect width='800' height='250' fill='%23c41e3a'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial, sans-serif' font-size='24' fill='%23ffffff'%3ELịch sử Quan trọng%3C/text%3E%3C/svg%3E";
+      this.alt = "Hình ảnh lịch sử";
     });
   });
 });

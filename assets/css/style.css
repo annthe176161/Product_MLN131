@@ -81,6 +81,10 @@ h1, h2, h3, h4, h5, h6 {
     padding: 15px 0;
     box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
     transition: all 0.3s ease;
+    position: sticky;
+    top: 0;
+    z-index: 998;
+    will-change: box-shadow, background;
 }
 
 .navbar-brand {
@@ -88,41 +92,80 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 700;
     color: var(--gold) !important;
     letter-spacing: 2px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .nav-link {
-    color: var(--text-light) !important;
-    margin: 0 10px;
-    font-weight: 500;
+    color: rgba(255, 255, 255, 0.85) !important;
+    margin: 0 8px;
+    padding: 8px 16px !important;
+    font-weight: 600;
     position: relative;
     transition: all 0.3s ease;
+    border-radius: 8px;
+    font-size: 0.95rem;
 }
 
+/* Hover effect */
+.nav-link:hover {
+    color: var(--gold) !important;
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+/* Active state - NỔI BẬT */
+.nav-link.active {
+    color: var(--dark-red) !important;
+    background: var(--gold) !important;
+    font-weight: 700;
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+    transform: scale(1.05);
+}
+
+/* Underline indicator */
 .nav-link::after {
     content: '';
     position: absolute;
-    bottom: -5px;
+    bottom: 0px;
     left: 50%;
     transform: translateX(-50%);
     width: 0;
-    height: 2px;
-    background-color: var(--gold);
+    height: 3px;
+    background: var(--gold);
     transition: width 0.3s ease;
+    border-radius: 2px;
 }
 
-.nav-link:hover::after,
+.nav-link:hover::after {
+    width: 70%;
+}
+
 .nav-link.active::after {
-    width: 80%;
+    width: 0;  /* Ẩn underline khi active vì đã có background */
 }
 
-/* ================================
-   Hero Section
-   ================================ */
+/* Hiệu ứng glow cho active link */
+.nav-link.active::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, var(--gold), #ffed4e);
+    border-radius: 10px;
+    z-index: -1;
+    opacity: 0.3;
+    filter: blur(8px);
+}
+
+/* Hero Section - thêm padding-top để không bị navbar che */
 .hero-section {
     position: relative;
     background: linear-gradient(135deg, #c41e3a 0%, #8b0000 50%, #660000 100%);
     color: var(--text-light);
     overflow: hidden;
+    padding-top: 60px;
 }
 
 .hero-section::before {
@@ -275,22 +318,45 @@ h1, h2, h3, h4, h5, h6 {
    Timeline Section
    ================================ */
 .month-filter {
+    position: sticky;
+    top: 80px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(250, 250, 250, 0.95) 100%);
+    padding: 12px 16px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    z-index: 50;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    backdrop-filter: blur(8px);
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+.month-filter .row {
     display: flex;
-    justify-content: center;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 6px;
+    justify-content: center;
+}
+
+.month-filter .col-6,
+.month-filter .col-md-3,
+.month-filter .col-lg-2 {
+    flex: 0 0 auto !important;
+    width: auto !important;
 }
 
 .btn-month {
     background: white;
     color: var(--primary-red);
-    border: 2px solid var(--primary-red);
-    padding: 10px 20px;
-    border-radius: 50px;
+    border: 1.5px solid var(--primary-red);
+    padding: 6px 12px;
+    border-radius: 20px;
     font-weight: 600;
-    transition: all 0.2s ease;  /* Giảm từ 0.3s xuống 0.2s */
-    width: 100%;
-    will-change: transform;  /* Tối ưu GPU */
+    font-size: 0.85rem;
+    transition: all 0.2s ease;
+    will-change: transform;
+    white-space: nowrap;
+    min-width: fit-content;
 }
 
 .btn-month:hover,
@@ -298,7 +364,7 @@ h1, h2, h3, h4, h5, h6 {
     background: linear-gradient(135deg, var(--primary-red), var(--dark-red));
     color: white;
     transform: scale(1.05);
-    box-shadow: 0 5px 20px rgba(196, 30, 58, 0.3);
+    box-shadow: 0 3px 12px rgba(196, 30, 58, 0.25);
 }
 
 .timeline-container {
@@ -575,24 +641,27 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .analysis-tabs .nav-link {
-    background: #f8f9fa;
-    color: var(--text-dark);
-    border: 2px solid transparent;
+    background: rgba(196, 30, 58, 0.1);
+    color: var(--dark-red);
+    border: 2px solid var(--primary-red);
     border-radius: 50px;
     padding: 12px 25px;
-    font-weight: 600;
+    font-weight: 700;
     transition: all 0.3s ease;
 }
 
 .analysis-tabs .nav-link:hover {
-    background: #e9ecef;
+    background: rgba(196, 30, 58, 0.2);
     transform: translateY(-2px);
+    border-color: var(--dark-red);
+    color: var(--dark-red);
 }
 
 .analysis-tabs .nav-link.active {
-    background: linear-gradient(135deg, var(--primary-red), var(--dark-red));
+    background: var(--primary-red);
     color: white;
-    border-color: var(--gold);
+    border-color: var(--primary-red);
+    box-shadow: 0 4px 15px rgba(196, 30, 58, 0.3);
 }
 
 .analysis-card {
@@ -1074,6 +1143,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ================================
+   Mobile Bottom Navigation (Removed)
+   ================================ */
+/* CSS cho mobile bottom nav đã bị xóa vì không còn sử dụng */
+
+/* ================================
    Back to Top Button
    ================================ */
 .back-to-top {
@@ -1092,7 +1166,10 @@ h1, h2, h3, h4, h5, h6 {
     visibility: hidden;
     transition: all 0.3s ease;
     box-shadow: 0 5px 20px rgba(196, 30, 58, 0.4);
-    z-index: 1000;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .back-to-top.show {
@@ -1103,6 +1180,42 @@ h1, h2, h3, h4, h5, h6 {
 .back-to-top:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 25px rgba(196, 30, 58, 0.6);
+}
+
+/* Mobile adjustment */
+@media (max-width: 767px) {
+    .back-to-top {
+        bottom: 20px;
+        right: 15px;
+        width: 45px;
+        height: 45px;
+    }
+    
+    /* Mobile navbar styling */
+    .navbar-collapse {
+        background: rgba(139, 0, 0, 0.98);
+        padding: 20px;
+        border-radius: 10px;
+        margin-top: 10px;
+    }
+    
+    /* Tăng tốc độ animation đóng mở navbar */
+    .navbar-collapse.collapsing {
+        transition: height 0.2s ease !important;
+    }
+    
+    .nav-link {
+        margin: 5px 0;
+        padding: 12px 20px !important;
+        border-radius: 8px;
+        transition: all 0.2s ease;
+    }
+    
+    .nav-link.active {
+        background: var(--gold) !important;
+        color: var(--dark-red) !important;
+        font-weight: 700;
+    }
 }
 
 /* ================================
