@@ -181,37 +181,30 @@ document.querySelectorAll(".stat-number").forEach((counter) => {
 });
 
 // Timeline functionality
-let currentFilter = "all";
-
-// Sort events by month and day
-const sortedEvents = historicalEvents.sort((a, b) => {
-  if (a.month !== b.month) {
-    return a.month - b.month;
-  }
-  return a.day - b.day;
-});
-
-// Render timeline events
-function renderTimeline(filterMonth = "all") {
+// Render timeline events - show all events
+function renderTimeline() {
   const container = document.getElementById("timeline-container");
   container.innerHTML = "";
 
-  const filteredEvents =
-    filterMonth === "all"
-      ? sortedEvents
-      : sortedEvents.filter((event) => event.month === parseInt(filterMonth));
+  // Sort events by month and day
+  const sortedEvents = historicalEvents.sort((a, b) => {
+    if (a.month !== b.month) {
+      return a.month - b.month;
+    }
+    return a.day - b.day;
+  });
 
-  if (filteredEvents.length === 0) {
+  if (sortedEvents.length === 0) {
     container.innerHTML = `
             <div class="text-center py-5">
                 <i class="fas fa-inbox fa-3x mb-3 text-muted"></i>
-                <p class="lead text-muted">Không có sự kiện nào trong tháng này</p>
+                <p class="lead text-muted">Không có sự kiện nào</p>
             </div>
         `;
     return;
   }
 
-  filteredEvents.forEach((event, index) => {
+  sortedEvents.forEach((event, index) => {
     const monthName = getMonthName(event.month);
     const eventHTML = `
             <div class="timeline-item" data-aos="fade-up" data-aos-delay="${
@@ -269,32 +262,6 @@ function getMonthName(month) {
   ];
   return months[month - 1];
 }
-
-// Month filter buttons
-const monthButtons = document.querySelectorAll(".btn-month");
-
-monthButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    // Remove active class from all buttons
-    monthButtons.forEach((btn) => btn.classList.remove("active"));
-
-    // Add active class to clicked button
-    button.classList.add("active");
-
-    // Get selected month
-    const selectedMonth = button.getAttribute("data-month");
-    currentFilter = selectedMonth;
-
-    // Render timeline with filter
-    renderTimeline(selectedMonth);
-
-    // Smooth scroll to timeline
-    document.getElementById("timeline").scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-    });
-  });
-});
 
 // Initial render
 renderTimeline();
