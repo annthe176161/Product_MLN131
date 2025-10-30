@@ -206,11 +206,118 @@ function renderTimeline() {
 
   sortedEvents.forEach((event, index) => {
     const monthName = getMonthName(event.month);
+
+    // Check if event has full content
+    const hasFullContent = event.fullContent && event.showFullContent;
+    const hasImages = event.images && event.images.length > 0;
+    const hasVideo = event.videoUrl;
+
+    // Create images HTML - full width display
+    let imagesHTML = "";
+    if (hasImages) {
+      imagesHTML = `
+        <div class="event-images-gallery mb-4">
+          ${event.images
+            .map(
+              (img) => `
+            <img src="${img}" alt="${event.title}" class="timeline-image-full" onclick="viewImageFullscreen('${img}')">`
+            )
+            .join("")}
+        </div>
+      `;
+    }
+
+    // Create full content sections if available
+    let fullContentHTML = "";
+    if (hasFullContent) {
+      // Icons mapping for different content types
+      const iconMap = {
+        background: "📋",
+        healthDecline: "⚠️",
+        impact: "💔",
+        achievements: "🏆",
+        recovery: "🛠️",
+        legacy: "👑",
+        conclusion: "✨",
+        origin: "🌍",
+        milestone: "🎯",
+        struggle: "✊",
+        global: "🌐",
+        waves: "🌊",
+        debate: "⚡",
+        manifesto: "📚",
+        marxApproach: "💡",
+      };
+
+      // Title mapping for different content types
+      const titleMap = {
+        background: "Bối cảnh",
+        healthDecline: "Suy sức khỏe",
+        impact: "Tác động",
+        achievements: "Thành tựu",
+        recovery: "Phục hồi và Phát triển",
+        legacy: "Di sản",
+        conclusion: "Kết luận",
+        origin: "Nguồn gốc",
+        milestone: "Những cột mốc",
+        struggle: "Cuộc đấu tranh",
+        global: "Toàn cầu",
+        waves: "Ba làn sóng nữ quyền",
+        debate: "Cuộc tranh luận",
+        manifesto: "Tuyên ngôn",
+        marxApproach: "Cách tiếp cận của Mác",
+      };
+
+      fullContentHTML = `<div class="event-full-content">`;
+
+      // Loop through all keys in fullContent and create sections
+      Object.keys(event.fullContent).forEach((key) => {
+        if (event.fullContent[key]) {
+          const icon = iconMap[key] || "📌";
+          const title = titleMap[key] || key;
+          const isHighlight = key === "conclusion";
+
+          if (isHighlight) {
+            fullContentHTML += `
+              <div class="content-section-highlight">
+                <h5 class="section-title">${icon} ${title}</h5>
+                <p class="text-justify">${event.fullContent[key]}</p>
+              </div>
+            `;
+          } else {
+            fullContentHTML += `
+              <div class="content-section">
+                <h5 class="section-title">${icon} ${title}</h5>
+                <p class="text-justify">${event.fullContent[key]}</p>
+              </div>
+            `;
+          }
+        }
+      });
+
+      fullContentHTML += `</div>`;
+    }
+
+    // Create video link if available
+    let videoHTML = "";
+    if (hasVideo) {
+      videoHTML = `
+        <div class="video-section mt-4">
+          <h5 class="section-title">📺 Video tham khảo</h5>
+          <a href="${event.videoUrl}" target="_blank" class="btn btn-danger btn-sm">
+            <i class="fab fa-youtube me-2"></i>Xem video trên YouTube
+          </a>
+        </div>
+      `;
+    }
+
     const eventHTML = `
             <div class="timeline-item" data-aos="fade-up" data-aos-delay="${
               index * 50
             }" style="animation-delay: ${index * 0.1}s">
-                <div class="timeline-content">
+                <div class="timeline-content ${
+                  hasFullContent ? "timeline-content-expanded" : ""
+                }">
                     <div>
                         <span class="timeline-date">
                             <i class="far fa-calendar-alt me-2"></i>${
@@ -221,11 +328,8 @@ function renderTimeline() {
                     </div>
                     <h3 class="timeline-title">${event.title}</h3>
                     <p class="timeline-description">${event.description}</p>
-                    ${
-                      event.image
-                        ? `<img src="${event.image}" alt="${event.title}" class="timeline-image">`
-                        : ""
-                    }
+                    ${imagesHTML}
+                    ${fullContentHTML}
                     <div class="timeline-tags">
                         ${event.tags
                           .map(
@@ -234,6 +338,7 @@ function renderTimeline() {
                           )
                           .join("")}
                     </div>
+                    ${videoHTML}
                 </div>
             </div>
         `;
@@ -242,6 +347,32 @@ function renderTimeline() {
 
   // Reinitialize AOS for new elements
   AOS.refresh();
+}
+
+// View image fullscreen
+function viewImageFullscreen(imageSrc) {
+  const fullscreenHTML = `
+    <div class="modal fade" id="imageFullscreenModal" tabindex="-1">
+      <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content">
+          <div class="modal-body p-0 d-flex align-items-center justify-content-center" style="background: #000;">
+            <img src="${imageSrc}" alt="Fullscreen Image" style="max-width: 100%; max-height: 100vh; object-fit: contain;">
+            <button type="button" class="btn-close btn-close-white position-absolute top-0 end-0 m-3" data-bs-dismiss="modal"></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+
+  const oldModal = document.getElementById("imageFullscreenModal");
+  if (oldModal) oldModal.remove();
+
+  document.body.insertAdjacentHTML("beforeend", fullscreenHTML);
+
+  const modal = new bootstrap.Modal(
+    document.getElementById("imageFullscreenModal")
+  );
+  modal.show();
 }
 
 // Get month name in Vietnamese

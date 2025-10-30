@@ -63,13 +63,28 @@ h1, h2, h3, h4, h5, h6 {
 
 .section-title {
     position: relative;
+    text-align: center !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.section-title h2 {
+    margin: 0 auto !important;
+    width: fit-content;
+}
+
+.section-title p {
+    margin: 0 auto !important;
+    width: fit-content;
 }
 
 .title-underline {
     width: 80px;
     height: 4px;
     background: linear-gradient(90deg, var(--primary-red), var(--gold));
-    margin: 20px auto;
+    margin: 20px auto !important;
     border-radius: 2px;
 }
 
@@ -2970,7 +2985,154 @@ html {
     }
 }
 
-/* Responsive modal */
+/* ================================
+   FULL WIDTH CONTENT DISPLAY
+   ================================ */
+
+/* Timeline content expanded for full details */
+.timeline-content-expanded {
+    padding: 40px !important;
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+}
+
+.timeline-content-expanded::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 8px;
+    background: linear-gradient(180deg, var(--primary-red), var(--gold));
+    border-radius: 15px 0 0 15px;
+}
+
+/* Event images gallery - full width display */
+.event-images-gallery {
+    display: grid;
+    gap: 25px;
+    margin: 30px 0;
+}
+
+.timeline-image-full {
+    width: 60%;
+    height: auto;
+    max-height: none;
+    object-fit: contain;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: 2px solid transparent;
+    margin: 0 auto;
+    display: block;
+}
+
+.timeline-image-full:hover {
+    transform: scale(1.02);
+    box-shadow: 0 15px 40px rgba(196, 30, 58, 0.3);
+    border-color: var(--primary-red);
+}
+
+/* Full content sections */
+.event-full-content {
+    margin: 30px 0;
+}
+
+.content-section {
+    background: white;
+    padding: 25px 30px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+    border-left: 5px solid var(--primary-red);
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+}
+
+.content-section:hover {
+    transform: translateX(5px);
+    box-shadow: 0 5px 20px rgba(196, 30, 58, 0.15);
+}
+
+.section-title {
+    color: var(--dark-red);
+    font-weight: 700;
+    font-size: 1.25rem;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--gold);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.content-section p {
+    margin: 0;
+    line-height: 2;
+    color: #555;
+    text-align: justify;
+    font-size: 1.05rem;
+}
+
+/* Highlight section */
+.content-section-highlight {
+    background: linear-gradient(135deg, #fff5f5, #ffe8e8);
+    padding: 30px 40px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+    border-left: 5px solid var(--gold);
+    box-shadow: 0 4px 20px rgba(196, 30, 58, 0.15);
+}
+
+.content-section-highlight .section-title {
+    color: var(--primary-red);
+    border-bottom-color: var(--primary-red);
+}
+
+.content-section-highlight p {
+    color: #333;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+/* Video section */
+.video-section {
+    background: linear-gradient(135deg, #e7f3ff, #e0ebff);
+    padding: 25px 30px;
+    border-radius: 12px;
+    border-left: 5px solid #007bff;
+    box-shadow: 0 3px 15px rgba(0, 123, 255, 0.15);
+}
+
+.video-section .section-title {
+    color: #007bff;
+    border-bottom-color: #007bff;
+}
+
+.video-section .btn {
+    margin-top: 10px;
+}
+
+/* Text justify for content */
+.text-justify {
+    text-align: justify;
+    text-align-last: left;
+}
+
+/* Responsive for expanded timeline */
+@media (max-width: 1200px) {
+    .timeline-content-expanded {
+        padding: 30px !important;
+    }
+    
+    .event-images-gallery {
+        gap: 20px;
+    }
+    
+    .content-section {
+        padding: 20px 25px;
+    }
+}
+
 @media (max-width: 768px) {
     .modal-dialog {
         margin: 10px;
@@ -2991,5 +3153,30 @@ html {
     .read-more-badge {
         font-size: 0.75rem;
         padding: 6px 12px;
+    }
+    
+    .timeline-content-expanded {
+        padding: 20px !important;
+    }
+    
+    .content-section {
+        padding: 15px 20px;
+    }
+    
+    .section-title {
+        font-size: 1.1rem;
+    }
+    
+    .content-section p {
+        font-size: 1rem;
+        line-height: 1.8;
+    }
+    
+    .event-images-gallery {
+        gap: 15px;
+    }
+    
+    .timeline-image-full {
+        border-radius: 8px;
     }
 }
