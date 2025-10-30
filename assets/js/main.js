@@ -298,14 +298,13 @@ function renderTimeline() {
       fullContentHTML += `</div>`;
     }
 
-    // Create video link if available
+    // Create video link if available - placed under title and made compact
     let videoHTML = "";
     if (hasVideo) {
       videoHTML = `
-        <div class="video-section mt-4">
-          <h5 class="section-title">📺 Video tham khảo</h5>
-          <a href="${event.videoUrl}" target="_blank" class="btn btn-danger btn-sm">
-            <i class="fab fa-youtube me-2"></i>Xem video trên YouTube
+        <div class="video-section mb-3">
+          <a href="${event.videoUrl}" target="_blank" class="btn btn-danger btn-sm video-btn-inline">
+            <i class="fab fa-youtube me-1"></i>Video tham khảo
           </a>
         </div>
       `;
@@ -327,6 +326,7 @@ function renderTimeline() {
                         <span class="timeline-month">${monthName}</span>
                     </div>
                     <h3 class="timeline-title">${event.title}</h3>
+                    ${videoHTML}
                     <p class="timeline-description">${event.description}</p>
                     ${imagesHTML}
                     ${fullContentHTML}
@@ -338,7 +338,6 @@ function renderTimeline() {
                           )
                           .join("")}
                     </div>
-                    ${videoHTML}
                 </div>
             </div>
         `;

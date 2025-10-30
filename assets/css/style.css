@@ -2401,56 +2401,535 @@ html {
 }
 
 /* Responsive for Unity & Case Studies */
+/* Mobile Responsive: Tablet (768px - 1024px) */
+@media (max-width: 1024px) and (min-width: 769px) {
+    #party-law .row {
+        margin-left: -10px;
+        margin-right: -10px;
+    }
+    
+    #party-law .col-lg-12,
+    #party-law .col-lg-10,
+    #party-law .col-lg-11 {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    
+    .concept-card {
+        margin-bottom: 25px;
+    }
+    
+    .case-study-card {
+        margin-bottom: 25px;
+    }
+    
+    .section-subtitle {
+        font-size: 1.6rem;
+    }
+}
+
+/* Mobile Responsive: Small Screens (max-width: 768px) */
 @media (max-width: 768px) {
-    .unity-theory-box,
-    .case-body {
+    /* General Section Adjustments */
+    #party-law {
+        padding: 50px 0 !important;
+    }
+    
+    #party-law .section-title h2 {
+        font-size: 1.8rem;
+        line-height: 1.3;
+        margin-bottom: 15px;
+    }
+    
+    #party-law .section-title p {
+        font-size: 1rem;
+    }
+    
+    /* Content Introduction */
+    .content-intro {
+        padding: 20px;
+        border-left-width: 4px;
+        margin-bottom: 30px;
+    }
+    
+    .intro-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    
+    .intro-header i {
+        font-size: 1.5rem;
+    }
+    
+    .intro-header h4 {
+        font-size: 1.3rem;
+    }
+    
+    .intro-body .lead {
+        font-size: 1rem;
+        margin-bottom: 15px;
+    }
+    
+    /* Core Question Box */
+    .core-question {
+        padding: 15px 20px;
+        margin: 15px 0;
+    }
+    
+    .core-question i {
+        display: none;
+    }
+    
+    .core-question p {
+        padding: 0;
+        font-size: 1rem;
+    }
+    
+    /* Context Note */
+    .context-note {
+        flex-direction: column;
+        padding: 15px;
+        font-size: 0.95rem;
+    }
+    
+    /* Section Subtitle */
+    .section-subtitle {
+        font-size: 1.3rem;
+        margin-bottom: 1.5rem;
+        padding: 10px 0;
+    }
+    
+    .section-subtitle::after {
+        width: 60px;
+        height: 3px;
+    }
+    
+    /* Concept Cards */
+    .concept-card {
+        border-radius: 10px;
+        overflow: hidden;
+        margin-bottom: 20px;
+    }
+    
+    .concept-header {
+        padding: 15px 20px;
+    }
+    
+    .concept-header h4 {
+        font-size: 1.25rem;
+    }
+    
+    .concept-body {
+        padding: 20px;
+    }
+    
+    .concept-intro {
+        font-size: 1rem;
+        margin-bottom: 15px;
+    }
+    
+    /* Constitutional Basis */
+    .constitutional-basis {
+        padding: 15px 20px;
+        border-left-width: 3px;
+    }
+    
+    .constitutional-basis blockquote {
+        font-size: 0.95rem;
+        margin: 10px 0 0 0;
+        padding-left: 15px;
+    }
+    
+    /* Leadership Aspects */
+    .leadership-aspects {
+        gap: 15px;
+    }
+    
+    .aspect-item {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 15px;
+    }
+    
+    .aspect-item:hover {
+        transform: translateX(0);
+    }
+    
+    .aspect-number {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+    
+    .aspect-content h5 {
+        font-size: 1.05rem;
+    }
+    
+    .aspect-content p {
+        font-size: 0.95rem;
+    }
+    
+    /* Conflict Analysis Box */
+    .conflict-analysis-box {
+        border-top-width: 4px;
+    }
+    
+    .conflict-header {
+        padding: 15px 20px;
+    }
+    
+    .conflict-header h4 {
+        font-size: 1.25rem;
+    }
+    
+    .conflict-body {
+        padding: 20px;
+    }
+    
+    /* Conflict Scenarios - Stack on mobile */
+    .row.g-4 > .col-md-4 {
+        display: block;
+        width: 100%;
+        padding: 0 0 15px 0 !important;
+    }
+    
+    .conflict-scenario {
+        padding: 20px;
+        background: #fff3cd;
+    }
+    
+    .scenario-icon {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .conflict-scenario h6 {
+        font-size: 1rem;
+    }
+    
+    .conflict-scenario p {
+        font-size: 0.9rem;
+    }
+    
+    /* Orthodox View */
+    .orthodox-view {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 15px;
+    }
+    
+    /* Unity Theory Box */
+    .unity-theory-box {
         padding: 25px 20px;
+        border-top-width: 4px;
+    }
+    
+    .theory-intro {
+        margin-bottom: 25px;
+    }
+    
+    .theory-intro .fa-quote-left {
+        font-size: 2rem;
+    }
+    
+    .theory-intro .lead {
+        font-size: 1rem;
     }
     
     .central-thesis {
-        padding: 20px 25px;
+        padding: 15px 20px;
+        margin-top: 15px;
     }
     
     .central-thesis p {
+        font-size: 1rem;
+    }
+    
+    /* Unity Points */
+    .unity-points {
+        gap: 15px;
+    }
+    
+    .point-header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 15px 20px;
+        gap: 10px;
+    }
+    
+    .point-icon {
+        width: 45px;
+        height: 45px;
         font-size: 1.1rem;
     }
     
+    .point-header h5 {
+        margin: 0;
+        font-size: 1.1rem;
+    }
+    
+    .point-body {
+        padding: 15px 20px;
+    }
+    
+    .point-body p {
+        font-size: 0.95rem;
+    }
+    
+    .theory-conclusion {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 15px 20px;
+    }
+    
+    /* Case Study Cards */
+    .case-study-card {
+        border-radius: 10px;
+        margin-bottom: 20px;
+    }
+    
+    .case-header {
+        padding: 20px;
+    }
+    
+    .case-header h4 {
+        font-size: 1.25rem;
+    }
+    
+    .case-subtitle {
+        font-size: 0.95rem;
+    }
+    
+    .case-body {
+        padding: 20px;
+    }
+    
+    .case-intro {
+        font-size: 0.95rem;
+        padding: 15px;
+        margin-bottom: 20px;
+    }
+    
+    /* Story Section */
+    .story-header {
+        padding: 12px 15px;
+        margin-bottom: 20px;
+    }
+    
+    .story-header i {
+        font-size: 1.1rem;
+    }
+    
+    .story-header h5 {
+        font-size: 1.1rem;
+    }
+    
+    /* Story Timeline */
     .story-timeline {
-        padding-left: 0;
+        padding-left: 40px;
     }
     
     .story-timeline::before {
-        left: 7px;
+        left: 15px;
+        width: 2px;
+    }
+    
+    .timeline-step {
+        margin-bottom: 25px;
+        gap: 15px;
     }
     
     .step-badge {
         width: 35px;
         height: 35px;
+        font-size: 0.9rem;
+        left: -50px;
+        min-width: 35px;
+    }
+    
+    .step-content {
+        padding: 15px;
+        font-size: 0.95rem;
+    }
+    
+    .step-content h6 {
         font-size: 1rem;
-        left: -10px;
+        margin-bottom: 10px;
     }
     
-    .flow-step {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
+    .step-content p {
+        font-size: 0.9rem;
+        margin-bottom: 8px;
     }
     
-    .flow-year,
-    .flow-icon {
-        width: 70px;
-        height: 70px;
-        font-size: 1.2rem;
+    .result-list {
+        margin-top: 10px;
+    }
+    
+    .result-list li {
+        padding: 6px 0;
+        font-size: 0.9rem;
+    }
+    
+    /* Analysis Comparison - Stack vertically */
+    .analysis-comparison {
+        margin-top: 20px;
+    }
+    
+    .row.g-3 > .col-md-6 {
+        display: block;
+        width: 100%;
+        padding: 0 0 15px 0 !important;
+    }
+    
+    .comparison-box {
+        padding: 15px 20px;
+        height: auto;
+    }
+    
+    .comparison-box h6 {
+        font-size: 1rem;
+    }
+    
+    .comparison-box p {
+        font-size: 0.9rem;
+    }
+    
+    /* Story Conclusion */
+    .story-conclusion {
+        padding: 15px 20px;
+        margin-top: 20px;
+        border-radius: 10px;
+    }
+    
+    .story-conclusion .fa-quote-left,
+    .story-conclusion .fa-quote-right,
+    .story-conclusion .fa-star {
+        display: none;
+    }
+    
+    .story-conclusion p {
+        padding: 0;
+        font-size: 0.95rem;
+    }
+    
+    /* Solution Grid */
+    .solution-grid {
+        gap: 15px;
     }
     
     .solution-item-inline {
         flex-direction: column;
         align-items: center;
         text-align: center;
+        padding: 15px;
+        gap: 10px;
     }
     
-    .story-conclusion {
-        padding: 20px 25px;
+    .solution-icon {
+        width: 45px;
+        height: 45px;
+        font-size: 1.2rem;
+    }
+    
+    .solution-item-inline strong {
+        margin-bottom: 8px;
+        font-size: 0.95rem;
+    }
+    
+    .solution-item-inline p {
+        font-size: 0.9rem;
+    }
+    
+    /* Institutionalization Flow */
+    .flow-step {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        margin-bottom: 25px;
+        gap: 15px;
+    }
+    
+    .flow-year,
+    .flow-icon {
+        width: 65px;
+        height: 65px;
+        font-size: 1.1rem;
+        margin: 0 auto;
+    }
+    
+    .flow-content {
+        padding: 15px 20px;
+        width: 100%;
+    }
+    
+    .flow-content h6 {
+        font-size: 1.05rem;
+    }
+    
+    .flow-content p {
+        font-size: 0.9rem;
+    }
+    
+    .flow-content ul {
+        padding-left: 20px;
+        margin-top: 10px;
+    }
+    
+    .flow-content ul li {
+        font-size: 0.9rem;
+        margin-bottom: 6px;
+    }
+    
+    .flow-arrow {
+        margin: 8px 0;
+    }
+    
+    .flow-arrow i {
+        font-size: 1.8rem;
+    }
+}
+
+/* Extra Small Screens (max-width: 480px) */
+@media (max-width: 480px) {
+    #party-law {
+        padding: 40px 0 !important;
+    }
+    
+    #party-law .section-title h2 {
+        font-size: 1.4rem;
+    }
+    
+    #party-law .section-title p {
+        font-size: 0.9rem;
+    }
+    
+    .section-subtitle {
+        font-size: 1.2rem;
+    }
+    
+    .concept-header h4,
+    .case-header h4,
+    .conflict-header h4 {
+        font-size: 1.1rem;
+    }
+    
+    .aspect-content h5 {
+        font-size: 0.95rem;
+    }
+    
+    .point-header h5 {
+        font-size: 1rem;
+    }
+    
+    .label-tag {
+        font-size: 0.75rem;
+        padding: 5px 12px;
     }
 }
 
@@ -2849,7 +3328,8 @@ html {
 
 @media (max-width: 768px) {
     .conclusion-section {
-        padding: 25px 20px;
+        padding: 20px;
+        border-bottom: 2px solid #f0f0f0;
     }
     
     .conclusion-section-body {
@@ -2858,22 +3338,236 @@ html {
     
     .conclusion-section-header {
         flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
+        text-align: center;
+        gap: 12px;
+        padding-bottom: 12px;
+        margin-bottom: 15px;
+    }
+    
+    .section-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+    }
+    
+    .conclusion-section-header h5 {
+        font-size: 1.2rem;
+        flex: none;
+    }
+    
+    .conclusion-section-body {
+        text-align: center;
+    }
+    
+    .conclusion-section-body p {
+        font-size: 1rem;
+        line-height: 1.8;
+    }
+    
+    /* Conflict Sources */
+    .conflict-sources {
+        display: grid;
+        grid-template-columns: 1fr;
         gap: 15px;
     }
     
-    .conflict-sources {
-        grid-template-columns: 1fr;
+    .source-card {
+        padding: 15px;
+        text-align: center;
     }
     
+    .source-number {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+        margin: 0 auto 10px;
+    }
+    
+    .source-card h6 {
+        font-size: 1rem;
+    }
+    
+    .source-card p {
+        font-size: 0.9rem;
+    }
+    
+    /* Unity Formula */
+    .unity-formula-conclusion {
+        flex-direction: column;
+        gap: 12px;
+        margin-top: 20px;
+        padding: 20px;
+    }
+    
+    .formula-part {
+        min-width: 100%;
+        padding: 15px;
+    }
+    
+    .formula-part i {
+        font-size: 1.5rem;
+    }
+    
+    .formula-part p {
+        font-size: 0.95rem;
+    }
+    
+    .formula-operator {
+        font-size: 1.8rem;
+        margin: 5px 0;
+    }
+    
+    .formula-result {
+        min-width: 100%;
+        padding: 15px;
+    }
+    
+    .formula-result i {
+        font-size: 2rem;
+    }
+    
+    .formula-result p {
+        font-size: 0.95rem;
+    }
+    
+    /* Dual Solution */
+    .dual-solution {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .solution-column {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .solution-column-header {
+        text-align: center;
+        margin-bottom: 12px;
+    }
+    
+    .solution-column-header i {
+        font-size: 1.5rem;
+    }
+    
+    .solution-column-header h6 {
+        font-size: 1.1rem;
+    }
+    
+    .but-note {
+        font-size: 0.9rem;
+        margin-bottom: 10px;
+    }
+    
+    .solution-list {
+        font-size: 0.9rem;
+    }
+    
+    .solution-divider {
+        transform: rotate(90deg);
+        margin: 8px 0;
+    }
+    
+    /* Final Statement Box */
     .final-statement-box {
         flex-direction: column;
-        padding: 30px 25px;
-        margin: 20px;
+        padding: 20px;
+        align-items: center;
+        text-align: center;
+        margin: 20px 0;
+    }
+    
+    .statement-icon {
+        font-size: 1.5rem;
+        margin: 5px 0;
     }
     
     .statement-text {
-        font-size: 1.1rem;
+        font-size: 1rem;
+        line-height: 1.8;
+    }
+    
+    .highlight-text {
+        display: block;
+        margin: 8px 0;
+    }
+}
+
+/* Extra Small Screens - Final Conclusion */
+@media (max-width: 480px) {
+    .final-conclusion-box {
+        border-radius: 12px;
+    }
+    
+    .conclusion-section {
+        padding: 15px;
+    }
+    
+    .conclusion-section-header {
+        gap: 10px;
+    }
+    
+    .section-icon {
+        width: 45px;
+        height: 45px;
+        font-size: 1.3rem;
+    }
+    
+    .conclusion-section-header h5 {
+        font-size: 1.05rem;
+    }
+    
+    .conclusion-section-body p {
+        font-size: 0.9rem;
+    }
+    
+    .source-card {
+        padding: 12px;
+    }
+    
+    .source-card h6 {
+        font-size: 0.9rem;
+    }
+    
+    .source-card p {
+        font-size: 0.8rem;
+    }
+    
+    .unity-formula-conclusion {
+        padding: 15px;
+        gap: 8px;
+    }
+    
+    .formula-part,
+    .formula-result {
+        padding: 12px;
+        font-size: 0.85rem;
+    }
+    
+    .formula-part i,
+    .formula-result i {
+        font-size: 1.2rem;
+    }
+    
+    .formula-operator {
+        font-size: 1.5rem;
+    }
+    
+    .solution-column-header h6 {
+        font-size: 1rem;
+    }
+    
+    .but-note {
+        font-size: 0.8rem;
+    }
+    
+    .solution-list {
+        font-size: 0.8rem;
+    }
+    
+    .statement-text {
+        font-size: 0.9rem;
     }
 }
 
@@ -3096,20 +3790,30 @@ html {
 
 /* Video section */
 .video-section {
-    background: linear-gradient(135deg, #e7f3ff, #e0ebff);
-    padding: 25px 30px;
-    border-radius: 12px;
-    border-left: 5px solid #007bff;
-    box-shadow: 0 3px 15px rgba(0, 123, 255, 0.15);
+    margin-bottom: 15px;
+    padding: 0;
+    border-radius: 0;
+    border-left: none;
+    box-shadow: none;
+    background: transparent;
 }
 
 .video-section .section-title {
-    color: #007bff;
-    border-bottom-color: #007bff;
+    display: none;
 }
 
-.video-section .btn {
-    margin-top: 10px;
+.video-btn-inline {
+    padding: 6px 12px !important;
+    font-size: 0.85rem !important;
+    line-height: 1.2 !important;
+    display: inline-flex !important;
+    align-items: center;
+    gap: 5px;
+    white-space: nowrap;
+}
+
+.video-btn-inline i {
+    font-size: 0.9rem;
 }
 
 /* Text justify for content */
