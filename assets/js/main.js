@@ -21,13 +21,27 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
       // Đóng navbar trên mobile khi click vào link
       const navbarCollapse = document.querySelector(".navbar-collapse");
       const navbarToggler = document.querySelector(".navbar-toggler");
+
       if (navbarCollapse && navbarCollapse.classList.contains("show")) {
         // Sử dụng Bootstrap's collapse method
         const bsCollapse = new bootstrap.Collapse(navbarCollapse, {
           toggle: false,
         });
         bsCollapse.hide();
+
+        // Đảm bảo navbar toggle button trở lại trạng thái bình thường
+        if (navbarToggler) {
+          navbarToggler.setAttribute("aria-expanded", "false");
+        }
       }
+
+      // Remove active class từ tất cả nav links trước khi add vào link hiện tại
+      document.querySelectorAll(".nav-link").forEach((link) => {
+        link.classList.remove("active");
+      });
+
+      // Thêm active class vào link được click
+      this.classList.add("active");
 
       // Sử dụng scrollIntoView với behavior tùy chọn
       const isMobile = window.innerWidth < 768;

@@ -415,6 +415,8 @@ h1, h2, h3, h4, h5, h6 {
     transition: transform 0.2s ease, box-shadow 0.2s ease;  /* Tối ưu transition */
     border-left: 5px solid var(--primary-red);
     will-change: transform;  /* Tối ưu GPU */
+    max-width: 1150px;
+    margin: 0 auto;
 }
 
 .timeline-content:hover {
@@ -1212,6 +1214,14 @@ h1, h2, h3, h4, h5, h6 {
         padding: 20px;
         border-radius: 10px;
         margin-top: 10px;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease, padding 0.3s ease;
+    }
+    
+    .navbar-collapse.show {
+        max-height: 500px;
+        padding: 20px;
     }
     
     /* Tăng tốc độ animation đóng mở navbar */
@@ -1224,12 +1234,26 @@ h1, h2, h3, h4, h5, h6 {
         padding: 12px 20px !important;
         border-radius: 8px;
         transition: all 0.2s ease;
+        display: block;
+        width: 100%;
     }
     
     .nav-link.active {
         background: var(--gold) !important;
         color: var(--dark-red) !important;
         font-weight: 700;
+        box-shadow: 0 3px 10px rgba(255, 215, 0, 0.3);
+    }
+    
+    /* Navbar toggler fix */
+    .navbar-toggler {
+        border: none;
+        outline: none;
+    }
+    
+    .navbar-toggler:focus {
+        box-shadow: none;
+        outline: none;
     }
 }
 
@@ -3769,23 +3793,23 @@ html {
 
 /* Highlight section */
 .content-section-highlight {
-    background: linear-gradient(135deg, #fff5f5, #ffe8e8);
+    background: #ffffff;
     padding: 30px 40px;
     border-radius: 12px;
     margin-bottom: 25px;
-    border-left: 5px solid var(--gold);
-    box-shadow: 0 4px 20px rgba(196, 30, 58, 0.15);
+    border-left: 5px solid var(--primary-red);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
 }
 
 .content-section-highlight .section-title {
-    color: var(--primary-red);
-    border-bottom-color: var(--primary-red);
+    color: var(--dark-red);
+    border-bottom-color: var(--gold);
 }
 
 .content-section-highlight p {
-    color: #333;
-    font-size: 1.1rem;
-    font-weight: 500;
+    color: #555;
+    font-size: 1.05rem;
+    font-weight: 400;
 }
 
 /* Video section */
@@ -3824,8 +3848,24 @@ html {
 
 /* Responsive for expanded timeline */
 @media (max-width: 1200px) {
+    .timeline-item {
+        margin-bottom: 40px;
+    }
+    
+    .timeline-content {
+        padding: 25px;
+    }
+    
     .timeline-content-expanded {
-        padding: 30px !important;
+        padding: 25px !important;
+    }
+    
+    .timeline-title {
+        font-size: 1.3rem;
+    }
+    
+    .timeline-description {
+        font-size: 0.95rem;
     }
     
     .event-images-gallery {
@@ -3835,9 +3875,107 @@ html {
     .content-section {
         padding: 20px 25px;
     }
+    
+    .section-title {
+        font-size: 1.15rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .timeline-item {
+        margin-bottom: 35px;
+    }
+    
+    .timeline-content {
+        padding: 20px;
+    }
+    
+    .timeline-title {
+        font-size: 1.25rem;
+        margin-bottom: 12px;
+    }
+    
+    .timeline-description {
+        font-size: 0.95rem;
+        margin-bottom: 12px;
+    }
+    
+    .timeline-date {
+        font-size: 0.85rem;
+        padding: 6px 15px;
+        margin-bottom: 12px;
+    }
+    
+    .timeline-month {
+        font-size: 0.75rem;
+        padding: 4px 12px;
+        margin-left: 8px;
+    }
 }
 
 @media (max-width: 768px) {
+    .timeline-item {
+        margin-bottom: 30px;
+    }
+    
+    .timeline-content {
+        padding: 15px;
+        border-radius: 10px;
+    }
+    
+    .timeline-content:hover {
+        transform: translateX(0);
+    }
+    
+    .timeline-content-expanded {
+        padding: 15px !important;
+    }
+    
+    .timeline-title {
+        font-size: 1.15rem;
+        margin-bottom: 10px;
+    }
+    
+    .timeline-description {
+        font-size: 0.9rem;
+        line-height: 1.6;
+        margin-bottom: 10px;
+    }
+    
+    .timeline-date {
+        display: block;
+        font-size: 0.8rem;
+        padding: 5px 12px;
+        margin-bottom: 8px;
+    }
+    
+    .timeline-month {
+        display: block;
+        font-size: 0.7rem;
+        padding: 3px 10px;
+        margin-left: 0;
+        margin-top: 5px;
+    }
+    
+    .timeline-tags {
+        gap: 8px;
+        margin-top: 10px;
+    }
+    
+    .timeline-tag {
+        font-size: 0.75rem;
+        padding: 4px 12px;
+    }
+    
+    .video-section {
+        margin-bottom: 10px;
+    }
+    
+    .video-btn-inline {
+        padding: 5px 10px !important;
+        font-size: 0.8rem !important;
+    }
+    
     .modal-dialog {
         margin: 10px;
     }
@@ -3859,28 +3997,87 @@ html {
         padding: 6px 12px;
     }
     
-    .timeline-content-expanded {
-        padding: 20px !important;
-    }
-    
     .content-section {
-        padding: 15px 20px;
+        padding: 12px 15px;
     }
     
     .section-title {
-        font-size: 1.1rem;
+        font-size: 1rem;
+        margin-bottom: 8px;
     }
     
     .content-section p {
-        font-size: 1rem;
-        line-height: 1.8;
+        font-size: 0.9rem;
+        line-height: 1.6;
     }
     
     .event-images-gallery {
-        gap: 15px;
+        gap: 12px;
     }
     
     .timeline-image-full {
         border-radius: 8px;
+        width: 80% !important;
     }
 }
+
+@media (max-width: 480px) {
+    .timeline-item {
+        margin-bottom: 25px;
+    }
+    
+    .timeline-content {
+        padding: 12px;
+        border-radius: 8px;
+    }
+    
+    .timeline-title {
+        font-size: 1.05rem;
+        margin-bottom: 8px;
+    }
+    
+    .timeline-description {
+        font-size: 0.85rem;
+        margin-bottom: 8px;
+    }
+    
+    .timeline-date {
+        font-size: 0.75rem;
+        padding: 4px 10px;
+    }
+    
+    .timeline-month {
+        font-size: 0.65rem;
+        padding: 2px 8px;
+    }
+    
+    .timeline-tags {
+        gap: 6px;
+    }
+    
+    .timeline-tag {
+        font-size: 0.7rem;
+        padding: 3px 10px;
+    }
+    
+    .content-section {
+        padding: 10px 12px;
+    }
+    
+    .section-title {
+        font-size: 0.95rem;
+    }
+    
+    .content-section p {
+        font-size: 0.85rem;
+    }
+    
+    .event-images-gallery {
+        gap: 10px;
+    }
+    
+    .timeline-image-full {
+        width: 100% !important;
+    }
+}
+

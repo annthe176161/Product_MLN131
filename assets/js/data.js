@@ -44,7 +44,7 @@ const historicalEvents = [
   {
     id: 2,
     month: 2,
-    day: 1848,
+    day: 24,
     year: 1848,
     title: "Tuyên ngôn Đảng Cộng sản được công bố",
     description:
@@ -85,7 +85,7 @@ const historicalEvents = [
     id: 3,
     month: 3,
     day: 8,
-    year: 1857,
+    year: 1917,
     title: "Ngày Quốc tế Phụ nữ 8/3",
     description:
       "Ngày Quốc tế Phụ nữ 8/3 là ngày lễ được kỷ niệm ở nhiều nước trên thế giới nhằm vinh danh nữ công nhân lao động nói riêng và phụ nữ nói chung, ghi nhận sự đóng góp của phụ nữ cho sự phát triển của xã hội.",
@@ -416,7 +416,7 @@ const historicalEvents = [
   {
     id: 11,
     month: 11,
-    day: 7,
+    day: 8,
     year: 1917,
     title: "Phản kháng dữ dội tại Nga sau Cách mạng Tháng Mười",
     description:
