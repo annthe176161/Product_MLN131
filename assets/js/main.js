@@ -43,12 +43,25 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
       // Thêm active class vào link được click
       this.classList.add("active");
 
-      // Sử dụng scrollIntoView với behavior tùy chọn
+      // Tính navbar height để offset scroll
+      const navbar = document.querySelector(".navbar");
+      const navbarHeight = navbar ? navbar.offsetHeight : 0;
+      const targetPosition =
+        target.getBoundingClientRect().top + window.scrollY - navbarHeight - 20;
+
+      // Sử dụng smooth scroll với offset đúng
       const isMobile = window.innerWidth < 768;
-      target.scrollIntoView({
-        behavior: isMobile ? "auto" : "smooth", // Auto trên mobile
-        block: "start",
-      });
+      if (isMobile) {
+        window.scrollTo({
+          top: targetPosition,
+          behavior: "auto",
+        });
+      } else {
+        window.scrollTo({
+          top: targetPosition,
+          behavior: "smooth",
+        });
+      }
     }
   });
 });
